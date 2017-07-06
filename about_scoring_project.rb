@@ -31,24 +31,23 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score_for_single_number(dice, number)
   result = 0
-  if dice.size >0
-    count = dice.count(number)
-    scores_for_set = 100 * number
-    scores_for_single = 0
-    case number
-    when 1
-      scores_for_set = 1000
-      scores_for_single = 100
-    when 5
-      scores_for_set = 500
-      scores_for_single = 50
-    end
-    if count>=3
-      result += scores_for_set
-      result += (count - 3) * scores_for_single
-    else
-      result += count * scores_for_single
-    end
+  return result if dice.empty?
+  count = dice.count(number)
+  scores_for_set = 100 * number
+  scores_for_single = 0
+  case number
+  when 1
+    scores_for_set = 1000
+    scores_for_single = 100
+  when 5
+    scores_for_set = 500
+    scores_for_single = 50
+  end
+  if count >= 3
+    result += scores_for_set
+    result += (count - 3) * scores_for_single
+  else
+    result += count * scores_for_single
   end
   result
 end

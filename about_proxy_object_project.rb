@@ -16,7 +16,7 @@ class Proxy
   def initialize(target_object)
     @object = target_object
     @history = []
-    @calls_count = {}
+    @calls_count = Hash.new 0
     # ADD MORE CODE HERE
   end
 
@@ -27,11 +27,7 @@ class Proxy
   end
 
   def set_calls_count name
-    if @calls_count[name]
-      @calls_count[name] += 1
-    else
-      @calls_count[name] = 1
-    end
+    @calls_count[name] += 1
   end
 
   def number_of_times_called name
@@ -47,7 +43,7 @@ class Proxy
   end
 
   def called? name
-    @history.last == name if @history
+    @history.include? name
   end
   # WRITE CODE HERE
 end

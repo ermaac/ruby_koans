@@ -9,7 +9,7 @@ class DiceSet
   end
   
   def roll num
-    @values = Array.new(num) { |i|  rand(6) + 1}
+    @values = Array.new(num) { |i|  rand(1..6)}
   end
 end
 
