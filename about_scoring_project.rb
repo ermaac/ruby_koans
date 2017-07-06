@@ -29,8 +29,34 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+def score_for_single_number(dice, number)
+  result = 0
+  if dice.size >0
+    count = dice.count(number)
+    scores_for_set = 100 * number
+    scores_for_single = 0
+    case number
+    when 1
+      scores_for_set = 1000
+      scores_for_single = 100
+    when 5
+      scores_for_set = 500
+      scores_for_single = 50
+    end
+    if count>=3
+      result += scores_for_set
+      result += (count - 3) * scores_for_single
+    else
+      result += count * scores_for_single
+    end
+  end
+  result
+end
+
 def score(dice)
   # You need to write this method
+  result = (1..6).inject(0){|result, num| result += score_for_single_number(dice, num)}
+  result
 end
 
 class AboutScoringProject < Neo::Koan
