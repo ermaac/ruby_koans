@@ -32,7 +32,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 def score_for_single_number(dice, number)
   result = 0
   return result if dice.empty?
-  count = dice.count(number)
+  count = dice.count number
   scores_for_set = 100 * number
   scores_for_single = 0
   case number
@@ -40,7 +40,6 @@ def score_for_single_number(dice, number)
     scores_for_set = 1000
     scores_for_single = 100
   when 5
-    scores_for_set = 500
     scores_for_single = 50
   end
   if count >= 3
