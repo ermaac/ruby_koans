@@ -52,9 +52,7 @@ def score_for_single_number(dice, number)
 end
 
 def score(dice)
-  # You need to write this method
-  result = (1..6).inject(0){|result, num| result += score_for_single_number(dice, num)}
-  result
+  (1..6).inject(0) { |result, num| result += score_for_single_number(dice, num) }
 end
 
 class AboutScoringProject < Neo::Koan
